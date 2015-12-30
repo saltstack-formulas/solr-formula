@@ -16,9 +16,3 @@ base:
       - solrcloud.zookeeper
 
 ```
-
-
-Available states
-================
-* [solr](#solr)
-* [zookeeper](#zookeeper)
