@@ -97,7 +97,7 @@ zookeeper_log4j_file:
 {%endif%}
 myid:
   file.managed:
-    - name: /var/zookeeper/data/myid
+    - name: {{zoo_data}}myid
     - source: salt://solrcloud/files/myid
     - defaults:
       myid: {{zk_id}}
