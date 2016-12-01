@@ -19,7 +19,6 @@ solr:
     - source: {{solr_url}}{{solr_ver}}/{{solr_name}}-{{solr_ver}}.tgz
     - source_hash: {{solr_url}}{{solr_ver}}/{{solr_name}}-{{solr_ver}}.tgz.md5
     - archive_format: tar
-    - user: root
     - if_missing: /opt/{{solr_name}}-{{solr_ver}}/
   file.symlink:
     - name: {{solr_install_dir}}
