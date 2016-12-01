@@ -1,11 +1,11 @@
-{% set solr_url= salt['pillar.get']('solr:solr_url', "http://www.eu.apache.org/dist/lucene/solr/") %}
-{% set solr_ver= salt['pillar.get']('solr:solr_ver', "5.4.0") %}
-{% set solr_name= salt['pillar.get']('solr:solr_name', "solr") %}
-{% set solr_logs= salt['pillar.get']('solr:solr_logs', "/var/solr/logs/") %}
-{% set solr_data= salt['pillar.get']('solr:solr_data', "/var/solr/data/") %}
-{% set solr_home= salt['pillar.get']('solr:solr_home', "/var/solr/") %}
-{% set solr_user= salt['pillar.get']('solr:solr_user', "solr") %}
-{% set solr_install_dir= salt['pillar.get']('solr:solr_install_dir', "/opt/solr") %}
+{% set solr_url= salt['pillar.get']('solr:url', "http://www.eu.apache.org/dist/lucene/solr/") %}
+{% set solr_ver= salt['pillar.get']('solr:ver', "5.4.0") %}
+{% set solr_name= salt['pillar.get']('solr:name', "solr") %}
+{% set solr_logs= salt['pillar.get']('solr:logs', "/var/solr/logs/") %}
+{% set solr_data= salt['pillar.get']('solr:data', "/var/solr/data/") %}
+{% set solr_home= salt['pillar.get']('solr:home', "/var/solr/") %}
+{% set solr_user= salt['pillar.get']('solr:user', "solr") %}
+{% set solr_install_dir= salt['pillar.get']('solr:install_dir', "/opt/solr") %}
 
 {% set zoo_data= salt['pillar.get']('solr:zoo_data', "/var/zookeeper/data") %}
 {% set zoo_logs= salt['pillar.get']('solr:zoo_logs', "/var/zookeeper/logs") %}
