@@ -1,10 +1,10 @@
-{% set solr_home= salt['pillar.get']('solrcloud:solr_home', "/var/solr/") %}
-{% set solr_logs= salt['pillar.get']('solrcloud:solr_logs', "/var/solr/logs") %}
+{% set solr_home= salt['pillar.get']('solr:solr_home', "/var/solr/") %}
+{% set solr_logs= salt['pillar.get']('solr:solr_logs', "/var/solr/logs") %}
 
-{% set zk_timeout= salt['pillar.get']('solrcloud:zoo_client_timeout', '') %}
-{% set zk1= salt['pillar.get']('solrcloud:zoo_cluster:servers:zk1:ip', '') %}
-{% set zk2= salt['pillar.get']('solrcloud:zoo_cluster:servers:zk2:ip', '') %}
-{% set zk3= salt['pillar.get']('solrcloud:zoo_cluster:servers:zk3:ip', '') %}
+{% set zk_timeout= salt['pillar.get']('solr:zoo_client_timeout', '') %}
+{% set zk1= salt['pillar.get']('solr:zoo_cluster:servers:zk1:ip', '') %}
+{% set zk2= salt['pillar.get']('solr:zoo_cluster:servers:zk2:ip', '') %}
+{% set zk3= salt['pillar.get']('solr:zoo_cluster:servers:zk3:ip', '') %}
 
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with

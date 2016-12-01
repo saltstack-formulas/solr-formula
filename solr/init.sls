@@ -1,14 +1,14 @@
-{% set solr_url= salt['pillar.get']('solrcloud:solr_url', "http://www.eu.apache.org/dist/lucene/solr/") %}
-{% set solr_ver= salt['pillar.get']('solrcloud:solr_ver', "5.4.0") %}
-{% set solr_name= salt['pillar.get']('solrcloud:solr_name', "solr") %}
-{% set solr_logs= salt['pillar.get']('solrcloud:solr_logs', "/var/solr/logs/") %}
-{% set solr_data= salt['pillar.get']('solrcloud:solr_data', "/var/solr/data/") %}
-{% set solr_home= salt['pillar.get']('solrcloud:solr_home', "/var/solr/") %}
-{% set solr_user= salt['pillar.get']('solrcloud:solr_user', "solr") %}
-{% set solr_install_dir= salt['pillar.get']('solrcloud:solr_install_dir', "/opt/solr") %}
+{% set solr_url= salt['pillar.get']('solr:solr_url', "http://www.eu.apache.org/dist/lucene/solr/") %}
+{% set solr_ver= salt['pillar.get']('solr:solr_ver', "5.4.0") %}
+{% set solr_name= salt['pillar.get']('solr:solr_name', "solr") %}
+{% set solr_logs= salt['pillar.get']('solr:solr_logs', "/var/solr/logs/") %}
+{% set solr_data= salt['pillar.get']('solr:solr_data', "/var/solr/data/") %}
+{% set solr_home= salt['pillar.get']('solr:solr_home', "/var/solr/") %}
+{% set solr_user= salt['pillar.get']('solr:solr_user', "solr") %}
+{% set solr_install_dir= salt['pillar.get']('solr:solr_install_dir', "/opt/solr") %}
 
-{% set zoo_data= salt['pillar.get']('solrcloud:zoo_data', "/var/zookeeper/data") %}
-{% set zoo_logs= salt['pillar.get']('solrcloud:zoo_logs', "/var/zookeeper/logs") %}
+{% set zoo_data= salt['pillar.get']('solr:zoo_data', "/var/zookeeper/data") %}
+{% set zoo_logs= salt['pillar.get']('solr:zoo_logs', "/var/zookeeper/logs") %}
 
 lsof:
   pkg.installed
@@ -49,7 +49,7 @@ solr_user:
 solr_init_file:
   file.managed:
     - name: /etc/init.d/{{solr_name}}
-    - source: salt://solrcloud/files/solr
+    - source: salt://solr/files/solr
     - template: jinja
     - user: root
     - mode: 0755
@@ -57,7 +57,7 @@ solr_init_file:
 solr_include_file:
   file.managed:
     - name: /etc/default/solr.in.sh
-    - source: salt://solrcloud/files/solr.in.sh
+    - source: salt://solr/files/solr.in.sh
     - template: jinja
     - user: root
     - mode: 0644
@@ -65,7 +65,7 @@ solr_include_file:
 solr_xml:
   file.managed:
     - name: {{solr_data}}solr.xml
-    - source: salt://solrcloud/files/solr.xml
+    - source: salt://solr/files/solr.xml
     - template: jinja
     - user: {{solr_user}}
     - group: {{solr_user}}
@@ -74,7 +74,7 @@ solr_xml:
 solr_log4j:
   file.managed:
     - name: {{solr_home}}log4j.properties
-    - source: salt://solrcloud/files/log4j.properties
+    - source: salt://solr/files/log4j.properties
     - template: jinja
     - user: {{solr_user}}
     - group: {{solr_user}}

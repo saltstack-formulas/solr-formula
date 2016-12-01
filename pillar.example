@@ -1,4 +1,4 @@
-solrcloud:
+solr:
   solr_url: http://www.eu.apache.org/dist/lucene/solr/
   solr_ver: 5.4.0
   solr_name: solr
