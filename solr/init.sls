@@ -16,12 +16,12 @@ solr:
     - source: {{solr_url}}{{solr_ver}}/{{solr_name}}-{{solr_ver}}.tgz
     - source_hash: {{solr_url}}{{solr_ver}}/{{solr_name}}-{{solr_ver}}.tgz.md5
     - archive_format: tar
-    - options: --file /opt/{{solr_name}}-{{solr_ver}}/bin/install_solr_service.sh --strip-components=2
+    - options: --file /opt/{{solr_name}}-{{solr_ver}}/bin/install_solr_service.sh
     # FIXME: File is not meant to used here but there is no other salt param that can be used.
     - if_missing: /opt/{{solr_name}}-{{solr_ver}}/
   file.symlink:
     - name: {{solr_install_dir}}
-    - target: /opt/{{solr_name}}-{{solr_ver}}/
+    - target: /opt/{{solr_name}}-{{solr_ver}}/bin
 
 solr_install:
   cmd.run:
