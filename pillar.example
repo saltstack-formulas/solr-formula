@@ -1,6 +1,6 @@
 solr:
   solr_url: http://www.eu.apache.org/dist/lucene/solr/
-  solr_ver: 5.4.0
+  solr_ver: 6.3.0
   solr_name: solr
   solr_logs: /var/solr/logs/
   solr_data: /var/solr/data/
