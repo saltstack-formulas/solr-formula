@@ -10,31 +10,6 @@
 {% set zoo_data= salt['pillar.get']('solrcloud:zoo_data', "/var/zookeeper/data") %}
 {% set zoo_logs= salt['pillar.get']('solrcloud:zoo_logs', "/var/zookeeper/logs") %}
 
-solr_data_disk:
-  mount.mounted:
-    - name: {{solr_data}}
-    - device: /dev/xvdb1
-    - mkmnt: True
-    - fstype: ext4
-solr_logs_disk:
-  mount.mounted:
-    - name: {{solr_logs}}
-    - device: /dev/xvdc1
-    - mkmnt: True
-    - fstype: ext4
-zk_data_disk:
-  mount.mounted:
-    - name: {{zoo_data}}
-    - device: /dev/xvde1
-    - mkmnt: True
-    - fstype: ext4
-zk_logs_disk:
-  mount.mounted:
-    - name: {{zoo_logs}}
-    - device: /dev/xvdf1
-    - mkmnt: True
-    - fstype: ext4
-
 lsof:
   pkg.installed
 
