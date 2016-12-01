@@ -10,9 +10,6 @@
 {% set zoo_data= salt['pillar.get']('solr:zoo_data', "/var/zookeeper/data") %}
 {% set zoo_logs= salt['pillar.get']('solr:zoo_logs', "/var/zookeeper/logs") %}
 
-lsof:
-  pkg.installed
-
 solr:
   archive.extracted:
     - name: /opt/
