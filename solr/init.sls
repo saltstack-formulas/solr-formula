@@ -85,6 +85,4 @@ solr_service:
     - watch:
       - file: {{solr_data}}solr.xml
       - file: {{solr_home}}log4j.properties
-
-
-
+      
