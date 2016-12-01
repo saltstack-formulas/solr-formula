@@ -56,6 +56,6 @@ describe 'solr/init.sls' do
 
   describe file(solr_logfile) do
     it { should be_file }
-    its(:content) { should contain('INFO: Server startup in') }
+    its(:content) { should contain('Controls Apache Solr as a Service.') }
   end
 end
