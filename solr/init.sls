@@ -16,17 +16,23 @@ solr:
     - source: {{solr_url}}{{solr_ver}}/{{solr_name}}-{{solr_ver}}.tgz
     - source_hash: {{solr_url}}{{solr_ver}}/{{solr_name}}-{{solr_ver}}.tgz.md5
     - archive_format: tar
+    - options: --file /opt/{{solr_name}}-{{solr_ver}}/bin/install_solr_service.sh --strip-components=2
+    # FIXME: File is not meant to used here but there is no other salt param that can be used.
     - if_missing: /opt/{{solr_name}}-{{solr_ver}}/
   file.symlink:
     - name: {{solr_install_dir}}
     - target: /opt/{{solr_name}}-{{solr_ver}}/
+
+solr_install:
+  cmd.run:
+    - name: /opt/{{solr_name}}-{{solr_ver}}/bin/install_solr_service.sh ./install_solr_service.sh {{solr_name}}-{{solr_ver}}.tgz
 
 solr_user:
   user.present:
     - name: {{solr_user}}
     - home: {{solr_home}}
     - system: True
-    - shell: /bin/bash
+    # - shell: /bin/bash
 
 {% set dir_list = [solr_home,solr_logs,solr_data] %}
 {% for dir in dir_list %}
@@ -85,4 +91,3 @@ solr_service:
     - watch:
       - file: {{solr_data}}solr.xml
       - file: {{solr_home}}log4j.properties
-      
