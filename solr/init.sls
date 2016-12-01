@@ -21,11 +21,11 @@ solr:
     - if_missing: /opt/{{solr_name}}-{{solr_ver}}/
   file.symlink:
     - name: {{solr_install_dir}}
-    - target: /opt/{{solr_name}}-{{solr_ver}}/bin
+    - target: /opt/{{solr_name}}-{{solr_ver}}
 
 solr_install:
   cmd.run:
-    - name: /opt/{{solr_name}}-{{solr_ver}}/bin/install_solr_service.sh ./install_solr_service.sh {{solr_name}}-{{solr_ver}}.tgz
+    - name: /opt/{{solr_name}}-{{solr_ver}}/install_solr_service.sh /opt/{{solr_name}}-{{solr_ver}}.tgz {{solr_name}}-{{solr_ver}}.tgz
 
 solr_user:
   user.present:
