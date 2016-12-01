@@ -1,15 +1,15 @@
-{% set zoo_data= salt['pillar.get']('solrcloud:zoo_data', "/var/zookeeper/data/") %}
-{% set zoo_logs= salt['pillar.get']('solrcloud:zoo_logs', "/var/zookeeper/logs/") %}
-{% set zoo_url= salt['pillar.get']('solrcloud:zoo_url', "http://www.eu.apache.org/dist/zookeeper/") %}
-{% set zoo_ver= salt['pillar.get']('solrcloud:zoo_ver', "3.4.7") %}
-{% set zoo_name= salt['pillar.get']('solrcloud:zoo_name', "zookeeper") %}
-{% set zoo_conf_dir= salt['pillar.get']('solrcloud:zoo_conf_dir', "/opt/zookeeper/conf/") %}
-{% set zk1= salt['pillar.get']('solrcloud:zoo_cluster:servers:zk1:ip', '') %}
-{% set zk2= salt['pillar.get']('solrcloud:zoo_cluster:servers:zk2:ip', '') %}
-{% set zk3= salt['pillar.get']('solrcloud:zoo_cluster:servers:zk3:ip', '') %}
-{% set zk1_id= salt['pillar.get']('solrcloud:zoo_cluster:servers:zk1:id', '') %}
-{% set zk2_id= salt['pillar.get']('solrcloud:zoo_cluster:servers:zk2:id', '') %}
-{% set zk3_id= salt['pillar.get']('solrcloud:zoo_cluster:servers:zk3:id', '') %}
+{% set zoo_data= salt['pillar.get']('solr:zoo_data', "/var/zookeeper/data/") %}
+{% set zoo_logs= salt['pillar.get']('solr:zoo_logs', "/var/zookeeper/logs/") %}
+{% set zoo_url= salt['pillar.get']('solr:zoo_url', "http://www.eu.apache.org/dist/zookeeper/") %}
+{% set zoo_ver= salt['pillar.get']('solr:zoo_ver', "3.4.7") %}
+{% set zoo_name= salt['pillar.get']('solr:zoo_name', "zookeeper") %}
+{% set zoo_conf_dir= salt['pillar.get']('solr:zoo_conf_dir', "/opt/zookeeper/conf/") %}
+{% set zk1= salt['pillar.get']('solr:zoo_cluster:servers:zk1:ip', '') %}
+{% set zk2= salt['pillar.get']('solr:zoo_cluster:servers:zk2:ip', '') %}
+{% set zk3= salt['pillar.get']('solr:zoo_cluster:servers:zk3:ip', '') %}
+{% set zk1_id= salt['pillar.get']('solr:zoo_cluster:servers:zk1:id', '') %}
+{% set zk2_id= salt['pillar.get']('solr:zoo_cluster:servers:zk2:id', '') %}
+{% set zk3_id= salt['pillar.get']('solr:zoo_cluster:servers:zk3:id', '') %}
 {% set host_ip = salt['grains.get']('ipv4')[1] %}
 
 {% if "zookeeper" in grains.get('roles', []) %}
