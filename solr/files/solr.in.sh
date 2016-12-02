@@ -6,6 +6,8 @@
 {% set zk2= salt['pillar.get']('solr:zoo_cluster:servers:zk2:ip', '') %}
 {% set zk3= salt['pillar.get']('solr:zoo_cluster:servers:zk3:ip', '') %}
 
+# This file is managed by salt.
+
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -36,7 +38,7 @@ SOLR_HEAP="{{ (((grains.mem_total|int) * 0.3) )|round|int }}m"
 #SOLR_JAVA_MEM="-Xms512m -Xmx512m"
 
 # Enable verbose GC logging
-GC_LOG_OPTS="-verbose:gc -XX:+PrintHeapAtGC -XX:+PrintGCDetails \
+GC_LOG_OPTS="-verbose:gc -XX:+PrintGCDetails \
 -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -XX:+PrintTenuringDistribution -XX:+PrintGCApplicationStoppedTime"
 
 # These GC settings have shown to work well for a number of common Solr workloads
@@ -45,7 +47,6 @@ GC_TUNE="-XX:NewRatio=3 \
 -XX:TargetSurvivorRatio=90 \
 -XX:MaxTenuringThreshold=8 \
 -XX:+UseConcMarkSweepGC \
--XX:+UseParNewGC \
 -XX:ConcGCThreads=4 -XX:ParallelGCThreads=4 \
 -XX:+CMSScavengeBeforeRemark \
 -XX:PretenureSizeThreshold=64m \
