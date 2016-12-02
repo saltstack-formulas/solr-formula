@@ -5,13 +5,13 @@ describe 'solr/init.sls' do
   when 'debian'
     case os[:release]
     when '7.11'
-      pkgs_installed = %w()
-      main_config = '/etc/default/solr'
+      pkgs_installed = %w(lsof)
+      main_config = '/etc/default/solr.in.sh'
       solr_logfile = '/var/log/solr.log'
       service = 'solr'
     when '8.6'
-      pkgs_installed = %w()
-      main_config = '/etc/default/solr'
+      pkgs_installed = %w(lsof)
+      main_config = '/etc/default/solr.in.sh'
       solr_logfile = '/var/log/solr.log'
       service = 'solr'
     end
@@ -27,14 +27,14 @@ describe 'solr/init.sls' do
   when 'ubuntu'
     case os[:release]
     when '14.04'
-      pkgs_installed = %w(default-jre)
-      main_config = '/etc/default/solr'
+      pkgs_installed = %w(lsof)
+      main_config = '/etc/default/solr.in.sh'
       solr_logfile = '/var/log/solr.log'
       service = 'solr'
     when '16.04'
-      pkgs_installed = %w()
-      main_config = '/etc/default/solr'
-      solr_logfile = '/var/log/solr.log'
+      pkgs_installed = %w(lsof)
+      main_config = '/etc/default/solr.in.sh'
+      solr_logfile = '/var/solr/logs/solr.log'
       service = 'solr'
     end
   end
@@ -51,11 +51,11 @@ describe 'solr/init.sls' do
 
   describe file(main_config) do
     it { should be_file }
-    its(:content) { should_not match('# This file is managed by salt.') }
+    its(:content) { should match('# This file is managed by salt.') }
   end
 
   describe file(solr_logfile) do
     it { should be_file }
-    its(:content) { should contain('Controls Apache Solr as a Service.') }
+    its(:content) { should contain('Server Started') }
   end
 end
