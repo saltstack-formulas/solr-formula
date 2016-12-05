@@ -23,6 +23,7 @@ solr_get:
 solr_extract:
   cmd.run:
     - name: tar xzf /opt/{{solr_name}}-{{solr_ver}}.tgz {{solr_name}}-{{solr_ver}}/bin/install_solr_service.sh --strip-components=2
+    - cwd: /opt
 
 
 /opt/install_solr_service.sh:
