@@ -68,11 +68,6 @@ provisioner:
               zk3:
                 ip: 
                 id: '3'
-          java_opts:
-            - 'Djava.awt.headless=true'
-            - 'Xmx128m'
-            - 'XX:MaxPermSize=256m'
-            - 'XX:+UseConcMarkSweepGC'
           limit:
             soft: 48000
             hard: 64000
