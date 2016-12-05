@@ -41,7 +41,7 @@ provisioner:
           data: /var/solr/data/
           home: /var/solr/
           user: solr
-          install_dir: /opt/solr
+          install_dir: /opt/solr-6.3.0
           cluster:
             servers:
               solr1:
