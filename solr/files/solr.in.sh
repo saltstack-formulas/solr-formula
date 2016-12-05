@@ -1,5 +1,5 @@
-{% set solr_home= salt['pillar.get']('solr:solr_home', "/var/solr/") %}
-{% set solr_logs= salt['pillar.get']('solr:solr_logs', "/var/solr/logs") %}
+{% set solr_home= salt['pillar.get']('solr:home', "/var/solr/") %}
+{% set solr_logs= salt['pillar.get']('solr:logs', "/var/solr/logs") %}
 
 {% set zk_timeout= salt['pillar.get']('solr:zoo_client_timeout', '') %}
 {% set zk1= salt['pillar.get']('solr:zoo_cluster:servers:zk1:ip', '') %}
