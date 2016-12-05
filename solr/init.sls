@@ -10,31 +10,40 @@
 {% set zoo_data= salt['pillar.get']('solr:zoo_data', "/var/zookeeper/data") %}
 {% set zoo_logs= salt['pillar.get']('solr:zoo_logs', "/var/zookeeper/logs") %}
 
-solr:
-  archive.extracted:
-    - name: /opt/
+lsof:
+  pkg.installed
+
+solr_get:
+  file.managed:
+    - name: /opt/{{solr_name}}-{{solr_ver}}.tgz
     - source: {{solr_url}}{{solr_ver}}/{{solr_name}}-{{solr_ver}}.tgz
     - source_hash: {{solr_url}}{{solr_ver}}/{{solr_name}}-{{solr_ver}}.tgz.md5
-    - archive_format: tar
-    - options: -M --file /opt/{{solr_name}}-{{solr_ver}}/bin/install_solr_service.sh --strip-components=2
-    # FIXME: File is not meant to used here but there is no other salt param that can be used.
     - if_missing: /opt/{{solr_name}}-{{solr_ver}}/
-  file.symlink:
-    - name: {{solr_install_dir}}
-    - target: /opt/{{solr_name}}-{{solr_ver}}
+
+solr_extract:
+  cmd.run:
+    - name: tar xzf /opt/{{solr_name}}-{{solr_ver}}.tgz {{solr_name}}-{{solr_ver}}/bin/install_solr_service.sh --strip-components=2
+
+
+/opt/install_solr_service.sh:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 744
 
 solr_install:
   cmd.run:
-    - name: /opt/{{solr_name}}-{{solr_ver}}/install_solr_service.sh /opt/{{solr_name}}-{{solr_ver}}.tgz {{solr_name}}-{{solr_ver}}.tgz
+    - name: sudo /opt/install_solr_service.sh /opt/{{solr_name}}-{{solr_ver}}.tgz -f
+    # - unless: touch /opt/{{solr_name}}-{{solr_ver}}/
 
 solr_user:
   user.present:
     - name: {{solr_user}}
     - home: {{solr_home}}
     - system: True
-    # - shell: /bin/bash
+    - shell: /bin/bash
 
-{% set dir_list = [solr_home,solr_logs,solr_data] %}
+{% set dir_list = [solr_home,solr_logs,solr_data,solr_install_dir] %}
 {% for dir in dir_list %}
 {{dir}}:
   file.directory:
