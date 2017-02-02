@@ -6,7 +6,6 @@ rvm:
 sudo: required
 services: 
   - docker
-  - zookeeper
 
 env:
   matrix:
@@ -47,7 +46,10 @@ env:
   # - INSTANCE: cluster-centos-6   
 
 # https://github.com/zuazo/kitchen-in-travis-native/issues/1#issuecomment-142455888
-before_script: sudo iptables -L DOCKER || sudo iptables -N DOCKER
+before_script: 
+  - sudo iptables -L DOCKER || sudo iptables -N DOCKER
+  - sudo apt-get install git sendmail
+  - git clone https://github.com/saltstack-formulas/zookeeper-formula.git /tmp/zookeeper
 
 install:
   # setup ci for test formula

@@ -30,8 +30,34 @@ provisioner:
       top.sls:
         base:
           '*':
+            - zookeeper
             - solr
-
+      zookeeper:
+        source_url: 'http://www.us.apache.org/dist/zookeeper/zookeeper-3.4.9/zookeeper-3.4.9.tar.gz'
+        version: 3.4.9
+        # You can disable md5 checking if you know exactly what you are doing and set the following to an empty string.
+        source_md5: 3e8506075212c2d41030d874fcc9dcd2
+        prefix: /usr/lib
+        uid: 6030
+        hosts_function: network.get_hostname
+        hosts_target: 'roles:zookeeper'
+        targeting_method: grain # [compound, glob] also supported
+        config:
+          data_dir: /var/lib/zookeeper/data
+          port: 2181
+          jmx_port: 2183
+          snap_count: None
+          snap_retain_count: 3
+          purge_interval: None
+          max_client_cnxns: None
+          max_perm_size: 128
+          max_heap_size: 1024
+          initial_heap_size: 256
+          jvm_opts: None
+          log_level: INFO
+          quorum_port: 2888
+          election_port: 3888
+        restart_on_config: True
       solr.sls:
         solr:
           url: http://www.eu.apache.org/dist/lucene/solr/
@@ -73,9 +99,13 @@ provisioner:
             hard: 64000
   log_level: <%= ENV['SALT_DEBUG_LEVEL'] || 'info' %>
   formula: solr
+  dependencies: 
+    - {name: zookeeper, path: /tmp/zookeeper}  
   state_top:
     base:
       '*':
+        - zookeeper
+        - zookeeper.server
         - solr
         
 suites:
@@ -84,4 +114,6 @@ suites:
       state_top:
         base:
           '*':
+            - zookeeper
+            - zookeeper.server
             - solr
