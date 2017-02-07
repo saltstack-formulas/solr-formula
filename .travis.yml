@@ -48,7 +48,7 @@ env:
 # https://github.com/zuazo/kitchen-in-travis-native/issues/1#issuecomment-142455888
 before_script: 
   - sudo iptables -L DOCKER || sudo iptables -N DOCKER
-  - sudo apt-get install git sendmail
+  - sudo apt-get install git
   - git clone https://github.com/saltstack-formulas/zookeeper-formula.git /tmp/zookeeper
 
 install:
