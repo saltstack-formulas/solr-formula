@@ -25,7 +25,7 @@ provisioner:
   salt_install: bootstrap
   salt_bootstrap_url: https://bootstrap.saltstack.com
   salt_version: latest
-  data_path: test/shared
+#  data_path: test/shared
   is_file_root: false  
   formula: solr
   dependencies: 
