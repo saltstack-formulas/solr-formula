@@ -65,13 +65,13 @@ provisioner:
       solr.sls:
         solr:
           url: http://www.eu.apache.org/dist/lucene/solr/
-          ver: 6.3.0
+          ver: 6.4.1
           name: solr
           logs: /var/solr/logs/
           data: /var/solr/data/
           home: /var/solr/
           user: solr
-          install_dir: /opt/solr-6.3.0
+          install_dir: /opt/solr-6.4.1
           cluster:
             servers:
               solr1:
