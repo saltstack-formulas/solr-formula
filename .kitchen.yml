@@ -29,14 +29,14 @@ provisioner:
   is_file_root: false  
   formula: solr
   dependencies: 
-    - {name: zookeeper, path: ../zookeeper}   
+    - {name: zookeeper, path: /tmp/zookeeper} 
   pillars:
       top.sls:
         base:
           '*':
             - zookeeper
             - solr
-      zookeeper:
+      zookeeper.sls:
         source_url: 'http://www.us.apache.org/dist/zookeeper/zookeeper-3.4.9/zookeeper-3.4.9.tar.gz'
         version: 3.4.9
         # You can disable md5 checking if you know exactly what you are doing and set the following to an empty string.
