@@ -5,6 +5,7 @@ solr:
   logs: /var/solr/logs/
   data: /var/solr/data/
   home: /var/solr/
+  java_home: /usr/lib/jvm/java-8-oracle
   user: solr
   install_dir: /opt/solr
   cluster:

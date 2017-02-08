@@ -1,5 +1,6 @@
 {% set solr_home= salt['pillar.get']('solr:home', "/var/solr/") %}
 {% set solr_logs= salt['pillar.get']('solr:logs', "/var/solr/logs") %}
+{% set solr_java_home= salt['pillar.get']('solr:java_home', "") %}
 
 {% set zk_timeout= salt['pillar.get']('solr:zoo_client_timeout', '') %}
 {% set zk1= salt['pillar.get']('solr:zoo_cluster:servers:zk1:ip', '') %}
@@ -26,7 +27,7 @@
 # By default the script will use JAVA_HOME to determine which java
 # to use, but you can set a specific path for Solr to use without
 # affecting other Java applications on your server/workstation.
-#SOLR_JAVA_HOME=""
+SOLR_JAVA_HOME="{{ solr_java_home }}"
 
 
 # Increase Java Heap as needed to support your indexing / query needs
