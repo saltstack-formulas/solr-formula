@@ -38,6 +38,7 @@ describe 'solr/init.sls' do
       service = 'solr'
     end
   end
+  solr_install_file = '/opt/install_solr_service.sh'
 
   pkgs_installed.each do |p|
     describe package(p) do
@@ -58,4 +59,14 @@ describe 'solr/init.sls' do
     it { should be_file }
     its(:content) { should contain('Server Started') }
   end
+
+  describe file(solr_install_file) do
+    it { should be_file }
+    its(:size) { should > 5 }
+    it { should be_executable }
+  end
+
+  describe file('/opt/solr') do
+    it { should be_symlink }
+  end  
 end
