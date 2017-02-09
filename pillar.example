@@ -8,6 +8,7 @@ solr:
   java_home: /usr/lib/jvm/java-8-oracle
   user: solr
   install_dir: /opt/solr
+  mode: solrcloud
   cluster:
     servers:
       solr1:

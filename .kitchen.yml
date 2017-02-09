@@ -73,6 +73,7 @@ provisioner:
           java_home: /usr/lib/jvm/java-8-oracle
           user: solr
           install_dir: /opt/solr-6.4.1
+          mode: solrcloud
           cluster:
             servers:
               solr1:
