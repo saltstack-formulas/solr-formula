@@ -3,9 +3,9 @@
 {% set solr_java_home= salt['pillar.get']('solr:java_home', "") %}
 
 {% set zk_timeout= salt['pillar.get']('solr:zoo_client_timeout', '') %}
-{% set zk1= salt['pillar.get']('solr:zoo_cluster:servers:zk1:ip', '') %}
-{% set zk2= salt['pillar.get']('solr:zoo_cluster:servers:zk2:ip', '') %}
-{% set zk3= salt['pillar.get']('solr:zoo_cluster:servers:zk3:ip', '') %}
+{% set zk1= salt['pillar.get']('solr:zoo_cluster:servers:zk1:ip', 'localhost') %}
+{% set zk2= salt['pillar.get']('solr:zoo_cluster:servers:zk2:ip', 'localhost') %}
+{% set zk3= salt['pillar.get']('solr:zoo_cluster:servers:zk3:ip', 'localhost') %}
 
 # This file is managed by salt.
 
