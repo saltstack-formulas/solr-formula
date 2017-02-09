@@ -86,8 +86,6 @@ provisioner:
           zoo_cluster:
             servers:
               - 'localhost:2181'
-              - 'localhost:2181'
-              - 'localhost:2181'
           limit:
             soft: 48000
             hard: 64000
