@@ -1,10 +1,10 @@
-{% set solr_home= salt['pillar.get']('solr:home', "/var/solr/") %}
-{% set solr_logs= salt['pillar.get']('solr:logs', "/var/solr/logs") %}
-{% set solr_java_home= salt['pillar.get']('solr:java_home', "") %}
-{% set solr_mode= salt['pillar.get']('solr:mode', "") %}
+{% set solr_home = salt['pillar.get']('solr:home', "/var/solr/") %}
+{% set solr_logs = salt['pillar.get']('solr:logs', "/var/solr/logs") %}
+{% set solr_java_home = salt['pillar.get']('solr:java_home', "") %}
+{% set solr_mode = salt['pillar.get']('solr:mode', "") %}
 
-{% set zk_timeout= salt['pillar.get']('solr:zoo_client_timeout', '') %}
-{% set zk_nodes = salt['pillar.get']('solr:zoo_cluster:servers') %}
+{% set zk_timeout = salt['pillar.get']('solr:zookeeper:client_timeout', '') %}
+{% set zk_nodes = salt['pillar.get']('solr:zookeeper:nodes') %}
 
 # This file is managed by salt.
 

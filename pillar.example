@@ -23,10 +23,10 @@ solr:
   zoo_logs: /var/zookeeper/logs/
   zoo_data: /var/zookeeper/data/
   zoo_conf_dir: /opt/zookeeper/conf/
-  zoo_client_timeout: 30000
-  zoo_cluster:
-    servers:
-      - 'localhost:2181'
+  zookeeper:
+    client_timeout: 30000
+    nodes:
+      - 'localhost:2181'  
       - 'somehost:2181'
       - 'someotherhost:2181'
 

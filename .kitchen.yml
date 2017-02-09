@@ -82,9 +82,9 @@ provisioner:
               solr2:
                 ip: 
                 id: '2'
-          zoo_client_timeout: 30000
-          zoo_cluster:
-            servers:
+          zookeeper:
+            client_timeout: 30000
+            nodes:
               - 'localhost:2181'
           limit:
             soft: 48000
