@@ -27,6 +27,6 @@ solr:
   zoo_cluster:
     servers:
       - 'localhost:2181'
-      - 'localhost:2181'
-      - 'localhost:2181'
+      - 'somehost:2181'
+      - 'someotherhost:2181'
 
