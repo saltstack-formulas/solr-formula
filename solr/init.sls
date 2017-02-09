@@ -24,7 +24,7 @@ solr_extract:
   cmd.run:
     - name: tar xzf /opt/{{solr_name}}-{{solr_ver}}.tgz {{solr_name}}-{{solr_ver}}/bin/install_solr_service.sh --strip-components=2
     - cwd: /opt
-
+    - runas: root
 
 /opt/install_solr_service.sh:
   file.managed:
@@ -34,8 +34,9 @@ solr_extract:
 
 solr_install:
   cmd.run:
-    - name: sudo /opt/install_solr_service.sh /opt/{{solr_name}}-{{solr_ver}}.tgz -f
+    - name: /opt/install_solr_service.sh /opt/{{solr_name}}-{{solr_ver}}.tgz -f
     # - unless: touch /opt/{{solr_name}}-{{solr_ver}}/
+    - runas: root
 
 solr_user:
   user.present:
