@@ -1,5 +1,5 @@
 {% set solr_url= salt['pillar.get']('solr:solr_url', "http://www.eu.apache.org/dist/lucene/solr/") %}
-{% set solr_ver= salt['pillar.get']('solr:solr_ver', "5.4.0") %}
+{% set solr_ver= salt['pillar.get']('solr:solr_ver', "6.4.1") %}
 {% set solr_name= salt['pillar.get']('solr:solr_name', "solr") %}
 {% set solr_logs= salt['pillar.get']('solr:solr_logs', "/var/solr/logs") %}
 {% set solr_data= salt['pillar.get']('solr:solr_data', "/var/solr/data") %}
