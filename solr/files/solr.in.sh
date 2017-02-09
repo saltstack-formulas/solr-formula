@@ -3,9 +3,7 @@
 {% set solr_java_home= salt['pillar.get']('solr:java_home', "") %}
 
 {% set zk_timeout= salt['pillar.get']('solr:zoo_client_timeout', '') %}
-{% set zk1= salt['pillar.get']('solr:zoo_cluster:servers:zk1:ip', 'localhost') %}
-{% set zk2= salt['pillar.get']('solr:zoo_cluster:servers:zk2:ip', 'localhost') %}
-{% set zk3= salt['pillar.get']('solr:zoo_cluster:servers:zk3:ip', 'localhost') %}
+{% set zk_nodes = salt['pillar.get']('solr:zoo_cluster:servers') %}
 
 # This file is managed by salt.
 
@@ -60,7 +58,7 @@ GC_TUNE="-XX:NewRatio=3 \
 # Set the ZooKeeper connection string if using an external ZooKeeper ensemble
 # e.g. host1:2181,host2:2181/chroot
 # Leave empty if not using SolrCloud
-ZK_HOST="{{zk1}}:2181,{{zk2}}:2181,{{zk3}}:2181"
+ZK_HOST="{{ zk_nodes|join(", ") }}"
 
 # Set the ZooKeeper client timeout (for SolrCloud mode)
 ZK_CLIENT_TIMEOUT="{{zk_timeout}}"
