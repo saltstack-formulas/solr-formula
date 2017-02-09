@@ -52,7 +52,6 @@ solr_user:
     - user: {{solr_user}}
     - group: {{solr_user}}
     - dir_mode: 0755
-    - file_mode: 0644
     - recurse:
       - user
       - mode
