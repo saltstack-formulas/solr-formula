@@ -4,7 +4,7 @@
 {% set solr_mode = salt['pillar.get']('solr:mode', "") %}
 
 {% set zk_timeout = salt['pillar.get']('solr:zookeeper:client_timeout', '') %}
-{% set zk_nodes = salt['pillar.get']('solr:zookeeper:nodes') %}
+{% set zk_nodes = salt['pillar.get']('solr:zookeeper:nodes', 'localhost:2181') %}
 
 # This file is managed by salt.
 
