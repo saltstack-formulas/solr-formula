@@ -17,12 +17,6 @@ solr:
       solr2:
         ip: 
         id: '2'
-  zoo_url: http://www.eu.apache.org/dist/zookeeper/
-  zoo_ver: 3.4.7
-  zoo_name: zookeeper
-  zoo_logs: /var/zookeeper/logs/
-  zoo_data: /var/zookeeper/data/
-  zoo_conf_dir: /opt/zookeeper/conf/
   zookeeper:
     client_timeout: 30000
     nodes:
