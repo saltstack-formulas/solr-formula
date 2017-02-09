@@ -18,7 +18,7 @@ addons:
 env:
   matrix:
   - INSTANCE: install-ubuntu-1404
-  # - INSTANCE: install-ubuntu-1604
+  - INSTANCE: install-ubuntu-1604
   # - INSTANCE: install-debian-7   
   # - INSTANCE: install-debian-8   
   # - INSTANCE: install-centos-6   
