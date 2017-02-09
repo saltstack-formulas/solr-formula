@@ -25,13 +25,7 @@ solr:
   zoo_client_timeout: 30000
   zoo_cluster:
     servers:
-      zk1:
-        ip: 
-        id: '1'
-      zk2:
-        ip: 
-        id: '2'
-      zk3:
-        ip: 
-        id: '3'
+      - 'localhost:2181'
+      - 'localhost:2181'
+      - 'localhost:2181'
 
