@@ -1,6 +1,7 @@
 {% set solr_home = salt['pillar.get']('solr:home', "/var/solr/") %}
 {% set solr_logs = salt['pillar.get']('solr:logs', "/var/solr/logs") %}
 {% set solr_java_home = salt['pillar.get']('solr:java_home', "") %}
+{% set solr_host = salt['pillar.get']('solr:host', "{{ grains.fqdn_ip4.0}}" ) %}
 {% set solr_mode = salt['pillar.get']('solr:mode', "") %}
 
 {% set zk_timeout = salt['pillar.get']('solr:zookeeper:client_timeout', '') %}
@@ -66,7 +67,7 @@ ZK_CLIENT_TIMEOUT="{{zk_timeout}}"
 
 # By default the start script uses "localhost"; override the hostname here
 # for production SolrCloud environments to control the hostname exposed to cluster state
-SOLR_HOST="{{ grains.fqdn_ip4.0 }}"
+SOLR_HOST="{{ solr_host }}"
 
 # By default the start script uses UTC; override the timezone if needed
 #SOLR_TIMEZONE="UTC"
